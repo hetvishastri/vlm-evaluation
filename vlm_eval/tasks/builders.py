@@ -74,7 +74,8 @@ def build_index_datasets(
     overwatch.info(f"Building Index Files for Dataset Family `{dataset_family}`", ctx_level=1)
     assert dataset_family in BUILDER_DISPATCH, f"Dataset Family `{dataset_family}` does not have a valid IndexDataset!"
     index_files = BUILDER_DISPATCH[dataset_family]["build_indices"](root_dir, slim_dataset_sizes, seed=seed)
-
+    print(index_files)
+    print(root_dir)
     overwatch.info("Assembling Map-Style Datasets from Index Files", ctx_level=1)
     index_datasets = [BUILDER_DISPATCH[dataset_family]["get_index_datasets"](root_dir, f) for f in index_files]
 

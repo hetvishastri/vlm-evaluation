@@ -34,7 +34,7 @@ overwatch = initialize_overwatch(__name__)
 def build_textvqa_indices(root_dir: Path, slim_dataset_sizes: Optional[Tuple[int, ...]], seed: int = 21) -> List[Path]:
     """Parse Text VQA raw files --> build & write index files w/ VQA keys + additional dataset-specific data."""
     paths = DATASET_REGISTRY["text-vqa"]["paths"]
-    os.makedirs(dataset_dir := root_dir / paths["dataset_dir"], exist_ok=True)
+    os.makedirs(dataset_dir := paths["dataset_dir"], exist_ok=True)
 
     # Short-Circuit (if index files have already been built)
     index_files = [dataset_dir / "metadata.json"] + (
